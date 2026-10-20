@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Logic - Nivel 1</title>
+    <link rel="stylesheet" href="Nivel1.css">
+</head>
+<body>
+
+    <!-- =========================================================
+         1. PANTALLA: GLOSARIO
+         ========================================================= -->
+    <section id="sec-glosario" class="screen active">
+        <img src="Recursos_graficos_nivel1/Pantalla_glosario.jpg" alt="Glosario" class="bg-fullscreen">
+        
+        <!-- Botón en la parte central derecha para avanzar -->
+        <button class="hitbox btn-glosario-next" onclick="goToScreen('sec-info-caso')">
+            <img src="Recursos_graficos_nivel1/BotonFlechaDerecha.png" class="btn-icon" alt="" /> <!-- Espacio opcional para imagen -->
+        </button>
+    </section>
+
+    <!-- =========================================================
+         2. PANTALLA: INFORMACIÓN DEL CASO
+         ========================================================= -->
+    <section id="sec-info-caso" class="screen">
+        <img src="Recursos_graficos_nivel1/Pantalla_informacion_del_caso.jpg" alt="Información del Caso" class="bg-fullscreen">
+        
+        <!-- Botón central izquierdo para volver al Glosario -->
+        <button class="hitbox btn-info-back" onclick="goToScreen('sec-glosario')">
+            <img src="Recursos_graficos_nivel1/BotonFlechaIzquierda.png" class="btn-icon" alt="" />
+        </button>
+        
+        <!-- Botón central derecho para avanzar a la Selección de Sospechosos -->
+        <button class="hitbox btn-info-next" onclick="goToScreen('sec-seleccion')">
+            <img src="Recursos_graficos_nivel1/BotonFlechaDerecha.png" class="btn-icon" alt="" />
+        </button>
+    </section>
+
+    <!-- =========================================================
+         3. PANTALLA: SELECCIÓN DE SOSPECHOSO
+         ========================================================= -->
+    <section id="sec-seleccion" class="screen">
+        <img src="Recursos_graficos_nivel1/Panatalla_seleccion_de_sospechoso.jpg" alt="Selección de Sospechoso" class="bg-fullscreen">
+        
+        <!-- Botón central izquierdo para regresar -->
+        <button class="hitbox btn-seleccion-back" onclick="goToScreen('sec-info-caso')">
+            <img src="Recursos_graficos_nivel1/BotonFlechaIzquierda.png" class="btn-icon" alt="" />
+        </button>
+
+        <!-- TARJETAS DE SOSPECHOSOS (HITBOXES SOBRE LA MESA) -->
+        
+        <!-- Sospechoso 1: LUCY STONE -->
+        <div class="hitbox card-suspect area-lucy" onclick="selectSuspect('LUCY STONE', 'sec-testimonio-lucy')">
+            <!-- Espacio reservado para imagen dinámica del retrato -->
+            
+            <span class="suspect-hover-effect"></span>
+        </div>
+
+        <!-- Sospechoso 2: DANIEL BLACK -->
+        <div class="hitbox card-suspect area-daniel" onclick="selectSuspect('DANIEL BLACK', 'sec-testimonio-daniel')">
+            <!-- Espacio reservado para imagen dinámica del retrato -->
+           
+            <span class="suspect-hover-effect"></span>
+        </div>
+
+        <!-- Sospechoso 3: JAMES HUNTER -->
+        <div class="hitbox card-suspect area-james" onclick="selectSuspect('JAMES HUNTER', 'sec-testimonio-james')">
+            <!-- Espacio reservado para imagen dinámica del retrato -->
+           
+            <span class="suspect-hover-effect"></span>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         4. PANTALLAS DE TESTIMONIO
+         ========================================================= -->
+
+    <!-- Testimonio: LUCY STONE -->
+    <section id="sec-testimonio-lucy" class="screen">
+        <img src="Recursos_graficos_nivel1/Pantalla_testimonio_LUCY_STONE.jpg" alt="Testimonio Lucy Stone" class="bg-fullscreen">
+        <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-seleccion')">
+            
+        </button>
+        <button class="hitbox btn-accuse-main" onclick="goToScreen('sec-contradiccion-lucy')">
+            
+        </button>
+    </section>
+
+    <!-- Testimonio: DANIEL BLACK -->
+    <section id="sec-testimonio-daniel" class="screen">
+        <img src="Recursos_graficos_nivel1/Pantalla_testimonio_DANIEL_BLACK.jpg" alt="Testimonio Daniel Black" class="bg-fullscreen">
+        <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-seleccion')">
+            
+        </button>
+        <button class="hitbox btn-accuse-main" onclick="goToScreen('sec-contradiccion-daniel')">
+           
+        </button>
+    </section>
+
+    <!-- Testimonio: JAMES HUNTER -->
+    <section id="sec-testimonio-james" class="screen">
+        <img src="Recursos_graficos_nivel1/Pantalla_testimonio_JAMES_HUNTER.jpg" alt="Testimonio James Hunter" class="bg-fullscreen">
+        <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-seleccion')">
+            
+        </button>
+        <button class="hitbox btn-accuse-main" onclick="goToScreen('sec-contradiccion-james')">
+            
+        </button>
+    </section>
+
+    <!-- =========================================================
+         5. PANTALLAS DE CONTRADICCIÓN
+         ========================================================= -->
+
+    <!-- Contradicción: LUCY STONE -->
+    <section id="sec-contradiccion-lucy" class="screen">
+        <img src="Recursos_graficos_nivel1/Pantalla_contradiccion_LUCY_STONE.jpg" alt="Contradicción Lucy Stone" class="bg-fullscreen">
+        <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-testimonio-lucy')">
+       
+        </button>
+        
+        <!-- Botones centrales -->
+        <button class="hitbox btn-contradiction btn-location" onclick="selectContradiction('Lucy Stone', 'Location')">
+            
+        </button>
+        <button class="hitbox btn-contradiction btn-murder-weapon" onclick="selectContradiction('Lucy Stone', 'Murder Weapon')">
+            
+        </button>
+    </section>
+
+    <!-- Contradicción: DANIEL BLACK -->
+    <section id="sec-contradiccion-daniel" class="screen">
+        <img src="Recursos_graficos_nivel1/Pantalla_contradiccion_DANIEL_BLACK.jpg" alt="Contradicción Daniel Black" class="bg-fullscreen">
+        <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-testimonio-daniel')">
+            
+        </button>
+        
+        <!-- Botones centrales -->
+        <button class="hitbox btn-contradiction btn-location" onclick="selectContradiction('Daniel Black', 'Location')">
+            
+        </button>
+        <button class="hitbox btn-contradiction btn-murder-weapon" onclick="selectContradiction('Daniel Black', 'Murder Weapon')">
+           
+        </button>
+    </section>
+
+    <!-- Contradicción: JAMES HUNTER -->
+    <section id="sec-contradiccion-james" class="screen">
+        <img src="Recursos_graficos_nivel1/Pantalla_contradiccion_JAMES_HUNTER.jpg" alt="Contradicción James Hunter" class="bg-fullscreen">
+        <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-testimonio-james')">
+           
+        </button>
+        
+        <!-- Botones centrales -->
+        <button class="hitbox btn-contradiction btn-location" onclick="selectContradiction('James Hunter', 'Location')">
+           
+        </button>
+        <button class="hitbox btn-contradiction btn-murder-weapon" onclick="selectContradiction('James Hunter', 'Murder Weapon')">
+            
+        </button>
+    </section>
+
+    <!-- LÓGICA DE NAVEGACIÓN -->
+    <script>
+        const gameState = {
+            currentScreen: 'sec-glosario',
+            selectedSuspect: null,
+            selectedContradiction: null
+        };
+
+        function goToScreen(targetScreenId) {
+            const current = document.getElementById(gameState.currentScreen);
+            if (current) current.classList.remove('active');
+
+            const target = document.getElementById(targetScreenId);
+            if (target) {
+                target.classList.add('active');
+                gameState.currentScreen = targetScreenId;
+            }
+        }
+
+        function selectSuspect(suspectName, targetScreenId) {
+            gameState.selectedSuspect = suspectName;
+            goToScreen(targetScreenId);
+        }
+
+        function selectContradiction(suspect, type) {
+            gameState.selectedContradiction = type;
+            alert(`Has elegido la contradicción de "${type}" para ${suspect}`);
+        }
+    </script>
+</body>
+</html>

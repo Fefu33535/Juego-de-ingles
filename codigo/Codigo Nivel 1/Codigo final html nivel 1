@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración inicial del documento y metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Logic - Nivel 1 Responsive</title>
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="Nivel1.css">
+</head>
+<body>
+
+    <!-- =========================================================================
+         CONTENEDOR PRINCIPAL ESCALABLE (Mantiene la proporción 16:9 y es responsive)
+         ========================================================================= -->
+    <div id="game-viewport">
+
+        <!-- =====================================================================
+             1. PANTALLA: GLOSARIO
+             ===================================================================== -->
+        <section id="sec-glosario" class="screen active">
+            <!-- Imagen de fondo principal del glosario adaptada al contenedor -->
+            <img src="Recursos_graficos_nivel1/Pantalla_glosario.jpg" alt="Glosario Nivel 1" class="bg-fullscreen">
+            <!-- Botón interactivo (Hitbox) para avanzar a la información del caso -->
+            <button class="hitbox btn-glosario-next" onclick="goToScreen('sec-info-caso')">
+                <img src="Recursos_graficos_nivel1/BotonFlechaDerecha.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+
+        <!-- =====================================================================
+             2. PANTALLA: INFORMACIÓN DEL CASO
+             ===================================================================== -->
+        <section id="sec-info-caso" class="screen">
+            <!-- Imagen de fondo con el expediente -->
+            <img src="Recursos_graficos_nivel1/Pantalla_informacion_del_caso.jpg" alt="Información del Caso" class="bg-fullscreen">
+            <!-- Botón izquierdo para volver al glosario -->
+            <button class="hitbox btn-info-back" onclick="goToScreen('sec-glosario')">
+                <img src="Recursos_graficos_nivel1/BotonFlechaIzquierda.png" class="btn-icon" alt="" />
+            </button>
+            <!-- Botón derecho para avanzar a la selección de sospechosos -->
+            <button class="hitbox btn-info-next" onclick="goToScreen('sec-seleccion')">
+                <img src="Recursos_graficos_nivel1/BotonFlechaDerecha.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+
+        <!-- =====================================================================
+             3. PANTALLA: SELECCIÓN DE SOSPECHOSO
+             ===================================================================== -->
+        <section id="sec-seleccion" class="screen">
+            <!-- Imagen de fondo con los tres sospechosos en la corchera -->
+            <img src="Recursos_graficos_nivel1/Panatalla_seleccion_de_sospechoso.jpg" alt="Selección de Sospechoso" class="bg-fullscreen">
+            <!-- Botón para regresar a la información del caso -->
+            <button class="hitbox btn-seleccion-back" onclick="goToScreen('sec-info-caso')">
+                <img src="Recursos_graficos_nivel1/BotonFlechaIzquierda.png" class="btn-icon" alt="" />
+            </button>
+
+            <!-- Tarjeta Interactiva 1: Lucy Stone -->
+            <div class="hitbox card-suspect area-lucy" onclick="selectSuspect('Lucy Stone', 'sec-testimonio-lucy')">
+               
+            </div>
+
+            <!-- Tarjeta Interactiva 2: Daniel Black -->
+            <div class="hitbox card-suspect area-daniel" onclick="selectSuspect('Daniel Black', 'sec-testimonio-daniel')">
+                
+            </div>
+
+            <!-- Tarjeta Interactiva 3: James Hunter (Culpable) -->
+            <div class="hitbox card-suspect area-james" onclick="selectSuspect('James Hunter', 'sec-testimonio-james')">
+                
+            </div>
+        </section>
+
+
+        <!-- =====================================================================
+             4. PANTALLAS DE TESTIMONIO INDIVIDUAL
+             ===================================================================== -->
+
+        <!-- Testimonio: Lucy Stone -->
+        <section id="sec-testimonio-lucy" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_testimonio_LUCY_STONE.jpg" alt="Testimonio Lucy" class="bg-fullscreen">
+            <!-- Botón superior izquierdo para volver a selección -->
+            <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-seleccion')">
+                <img src="Recursos_graficos_nivel1/botonback.png" class="btn-icon" alt="" />
+            </button>
+            <!-- Botón principal inferior para pasar a la pantalla de inculpar -->
+            <button class="hitbox btn-accuse-main" onclick="goToScreen('sec-inculpar-lucy')">
+                <img src="Recursos_graficos_nivel1/botonaccuse.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Testimonio: Daniel Black -->
+        <section id="sec-testimonio-daniel" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_testimonio_DANIEL_BLACK.jpg" alt="Testimonio Daniel" class="bg-fullscreen">
+            <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-seleccion')">
+                <img src="Recursos_graficos_nivel1/botonback.png" class="btn-icon" alt="" />
+            </button>
+            <button class="hitbox btn-accuse-main" onclick="goToScreen('sec-inculpar-daniel')">
+                <img src="Recursos_graficos_nivel1/botonaccuse.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Testimonio: James Hunter -->
+        <section id="sec-testimonio-james" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_testimonio_JAMES_HUNTER.jpg" alt="Testimonio James" class="bg-fullscreen">
+            <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-seleccion')">
+                <img src="Recursos_graficos_nivel1/botonback.png" class="btn-icon" alt="" />
+            </button>
+            <button class="hitbox btn-accuse-main" onclick="goToScreen('sec-inculpar-james')">
+                <img src="Recursos_graficos_nivel1/botonaccuse.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+
+        <!-- =====================================================================
+             5. PANTALLAS DE INCULPAR Y SELECCIÓN DE CONTRADICCIÓN
+             ===================================================================== -->
+
+        <!-- Inculpar: Lucy Stone -->
+        <section id="sec-inculpar-lucy" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_contradiccion_LUCY_STONE.jpg" alt="Inculpar Lucy" class="bg-fullscreen">
+            <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-testimonio-lucy')">
+                <img src="Recursos_graficos_nivel1/botonback.png" class="btn-icon" alt="" />
+            </button>
+            <!-- Contradicción de Ubicación -->
+            <button class="hitbox btn-contradiction btn-location" onclick="processResult('Lucy Stone', 'Location')">
+                <img src="Recursos_graficos_nivel1/botonucontraUbi.jpeg" class="btn-icon" alt="" />
+            </button>
+            <!-- Contradicción de Arma Homicida -->
+            <button class="hitbox btn-contradiction btn-murder-weapon" onclick="processResult('Lucy Stone', 'Weapon')">
+                <img src="Recursos_graficos_nivel1/botoncontraArma.jpeg" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Inculpar: Daniel Black -->
+        <section id="sec-inculpar-daniel" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_contradiccion_DANIEL_BLACK.jpg" alt="Inculpar Daniel" class="bg-fullscreen">
+            <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-testimonio-daniel')">
+                <img src="Recursos_graficos_nivel1/botonback.png" class="btn-icon" alt="" />
+            </button>
+            <button class="hitbox btn-contradiction btn-location" onclick="processResult('Daniel Black', 'Location')">
+                <img src="Recursos_graficos_nivel1/botonucontraUbi.jpeg" class="btn-icon" alt="" />
+            </button>
+            <button class="hitbox btn-contradiction btn-murder-weapon" onclick="processResult('Daniel Black', 'Weapon')">
+                <img src="Recursos_graficos_nivel1/botoncontraArma.jpeg" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Inculpar: James Hunter -->
+        <section id="sec-inculpar-james" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_contradiccion_JAMES_HUNTER.jpg" alt="Inculpar James" class="bg-fullscreen">
+            <button class="hitbox btn-top-left-back" onclick="goToScreen('sec-testimonio-james')">
+                <img src="Recursos_graficos_nivel1/botonback.png" class="btn-icon" alt="" />
+            </button>
+            <button class="hitbox btn-contradiction btn-location" onclick="processResult('James Hunter', 'Location')">
+                <img src="Recursos_graficos_nivel1/botonucontraUbi.jpeg" class="btn-icon" alt="" />
+            </button>
+            <button class="hitbox btn-contradiction btn-murder-weapon" onclick="processResult('James Hunter', 'Weapon')">
+                <img src="Recursos_graficos_nivel1/botoncontraArma.jpeg" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+
+        <!-- =====================================================================
+             6. LAS 6 PANTALLAS DE RESULTADO FINAL
+             ===================================================================== -->
+
+        <!-- Resultado 1: Lucy Stone + Ubicación Correcta (Sospechoso Incorrecto) -->
+        <section id="res-lucy-location" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_de_resultado_final_LUCY_STONE_correcta.jpg" alt="Resultado Lucy Location" class="bg-fullscreen">
+            <button class="hitbox btn-retry" onclick="retryLevel()">
+                <img src="Recursos_graficos_nivel1/botonretry.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Resultado 2: Lucy Stone + Arma Incorrecta (Todo Incorrecto) -->
+        <section id="res-lucy-weapon" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_de_resultado_final_LUCY_STONE_incorrecta.jpg" alt="Resultado Lucy Weapon" class="bg-fullscreen">
+            <button class="hitbox btn-retry" onclick="retryLevel()">
+                <img src="Recursos_graficos_nivel1/botonretry.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Resultado 3: Daniel Black + Ubicación Correcta (Sospechoso Incorrecto) -->
+        <section id="res-daniel-location" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_de_resultado_final_DANIEL_BLACK_correcta.jpg" alt="Resultado Daniel Location" class="bg-fullscreen">
+            <button class="hitbox btn-retry" onclick="retryLevel()">
+                <img src="Recursos_graficos_nivel1/botonretry.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Resultado 4: Daniel Black + Arma Incorrecta (Todo Incorrecto) -->
+        <section id="res-daniel-weapon" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_de_resultado_final_DANIEL_BLACK_incorrecta.jpg" alt="Resultado Daniel Weapon" class="bg-fullscreen">
+            <button class="hitbox btn-retry" onclick="retryLevel()">
+                <img src="Recursos_graficos_nivel1/botonretry.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Resultado 5: James Hunter + Ubicación Correcta [¡VICTORIA!] -->
+        <section id="res-james-location" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_de_resultado_final_JAMES_HUNTER_correcta.jpg" alt="Resultado James Victoria" class="bg-fullscreen">
+            <!-- Botón para avanzar al siguiente nivel / caso -->
+            <button class="hitbox btn-next-case" onclick="nextCase()">
+                <img src="Recursos_graficos_nivel1/botonnextcase.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+        <!-- Resultado 6: James Hunter + Arma Incorrecta (Sospechoso Correcto, Contradicción Errónea) -->
+        <section id="res-james-weapon" class="screen">
+            <img src="Recursos_graficos_nivel1/Pantalla_de_resultado_final_JAMES_HUNTER_incorrecta.jpg" alt="Resultado James Weapon" class="bg-fullscreen">
+            <button class="hitbox btn-retry" onclick="retryLevel()">
+                <img src="Recursos_graficos_nivel1/botonretry.png" class="btn-icon" alt="" />
+            </button>
+        </section>
+
+    </div><!-- Fin del contenedor responsive viewport -->
+
+
+    <!-- =====================================================================
+         LÓGICA JAVASCRIPT CON COMENTARIOS DETALLADOS
+         ===================================================================== -->
+    <script>
+        // Objeto global que almacena el estado actual de la sesión de juego
+        const gameState = {
+            currentScreen: 'sec-glosario', // Pantalla inicial al cargar el juego
+            selectedSuspect: null,         // Sospechoso elegido por el usuario
+            selectedContradiction: null    // Tipo de contradicción seleccionada
+        };
+
+        /**
+         * Función para cambiar de pantalla de manera fluida.
+         * Oculta la pantalla actual activa y muestra la pantalla de destino solicitada.
+         * @param {string} targetScreenId - El ID del elemento HTML de la pantalla destino.
+         */
+        function goToScreen(targetScreenId) {
+            // Selecciona la pantalla que se encuentra activa actualmente
+            const current = document.getElementById(gameState.currentScreen);
+            if (current) {
+                current.classList.remove('active'); // Quita la clase visualizadora
+            }
+
+            // Selecciona la nueva pantalla a la que se quiere ir
+            const target = document.getElementById(targetScreenId);
+            if (target) {
+                target.classList.add('active'); // Activa la visualización de la nueva pantalla
+                gameState.currentScreen = targetScreenId; // Actualiza el estado global de la pantalla actual
+            }
+        }
+
+        /**
+         * Registra el sospechoso seleccionado por el usuario y navega hacia su testimonio.
+         * @param {string} suspectName - Nombre del sospechoso elegido.
+         * @param {string} targetScreenId - ID de la pantalla de testimonio correspondiente.
+         */
+        function selectSuspect(suspectName, targetScreenId) {
+            gameState.selectedSuspect = suspectName; // Guarda el sospechoso en memoria
+            goToScreen(targetScreenId);              // Realiza la transición de pantalla
+        }
+
+        /**
+         * Valida la combinación final elegida por el jugador (Sospechoso + Contradicción)
+         * y dirige de forma exacta a una de las 6 pantallas de resultado final.
+         * @param {string} suspect - Nombre del sospechoso evaluado.
+         * @param {string} contradiction - Tipo de contradicción ('Location' o 'Weapon').
+         */
+        function processResult(suspect, contradiction) {
+            gameState.selectedContradiction = contradiction; // Guarda la contradicción elegida
+
+            // Camino 1 y 2: Evaluaciones para Lucy Stone
+            if (suspect === 'Lucy Stone') {
+                if (contradiction === 'Location') {
+                    goToScreen('res-lucy-location'); // Sospechoso Incorrecto / Contradicción Correcta
+                } else {
+                    goToScreen('res-lucy-weapon');   // Sospechoso Incorrecto / Contradicción Incorrecta
+                }
+            } 
+            // Camino 3 y 4: Evaluaciones para Daniel Black
+            else if (suspect === 'Daniel Black') {
+                if (contradiction === 'Location') {
+                    goToScreen('res-daniel-location'); // Sospechoso Incorrecto / Contradicción Correcta
+                } else {
+                    goToScreen('res-daniel-weapon');   // Sospechoso Incorrecto / Contradicción Incorrecta
+                }
+            } 
+            // Camino 5 y 6: Evaluaciones para James Hunter (El culpable real)
+            else if (suspect === 'James Hunter') {
+                if (contradiction === 'Location') {
+                    goToScreen('res-james-location');   // ¡VICTORIA! (Sospechoso Correcto y Ubicación Correcta)
+                } else {
+                    goToScreen('res-james-weapon');    // Fracaso parcial (Sospechoso Correcto pero Contradicción Errónea)
+                }
+            }
+        }
+
+        /**
+         * Reinicia por completo el nivel actual al presionar "RETRY", 
+         * limpiando las selecciones y devolviendo al usuario al Glosario.
+         */
+        function retryLevel() {
+            gameState.selectedSuspect = null;      // Limpia el sospechoso guardado
+            gameState.selectedContradiction = null; // Limpia la contradicción guardada
+            goToScreen('sec-glosario');            // Regresa a la pantalla inicial del nivel
+        }
+
+        /**
+         * Ejecuta la acción al presionar "NEXT CASE" tras completar con éxito el nivel.
+         */
+        function nextCase() {
+            alert("¡Caso 01 resuelto con éxito! Preparando el Nivel 2...");
+            // Aquí puedes programar la redirección al siguiente archivo html (ej. window.location.href = "nivel2.html");
+        }
+    </script>
+</body>
+</html>

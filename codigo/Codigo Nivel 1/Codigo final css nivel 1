@@ -1,0 +1,223 @@
+/* =========================================================================
+   1. RESET GENERAL Y CONFIGURACIÓN BASE DEL DOCUMENTO
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye bordes y padding dentro del tamaño total */
+    user-select: none;      /* Evita la selección accidental de texto en el juego */
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;       /* Oculta barras de desplazamiento navegador */
+    background-color: #0b0b0b; /* Fondo oscuro elegante estilo escritorio */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================================================
+   2. CONTENEDOR RESPONSIVE VIEWPORT (Mantiene relación de aspecto 16:9 fija)
+   Esto garantiza que las hitboxes porcentuales nunca se descalibren en 
+   ninguna pantalla o dispositivo (PC, tablets, notebooks).
+   ========================================================= */
+#game-viewport {
+    position: relative;
+    width: 100vw;
+    height: 56.25vw; /* Relación de aspecto 16:9 exacta basada en el ancho (16/9 = 0.5625) */
+    max-height: 100vh;
+    max-width: 177.78vh; /* Relación inversa para pantallas muy altas (16/9) */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9); /* Sombra elegante alrededor del juego */
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* =========================================================================
+   3. GESTIÓN DE PANTALLAS (VISIBILIDAD)
+   ========================================================= */
+.screen {
+    display: none;       /* Por defecto todas las pantallas están ocultas */
+    position: absolute;  /* Se posicionan de forma absoluta dentro del viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.screen.active {
+    display: block;      /* Muestra únicamente la pantalla que posea la clase 'active' */
+}
+
+.bg-fullscreen {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;    /* Ajusta la imagen de fondo para cubrir todo el viewport adaptable */
+    display: block;
+    pointer-events: none; /* Evita que la imagen interfiera con los clics de las hitboxes */
+}
+
+/* =========================================================================
+   4. CONFIGURACIÓN BASE DE LAS HITBOXES (BOTONES INVISIBLES)
+   ========================================================= */
+.hitbox {
+    position: absolute;
+    background: rgba(0, 0, 0, 0); /* Totalmente transparentes por defecto */
+    border: none;
+    cursor: pointer;
+    z-index: 20;                  /* Asegura que estén por encima de la imagen de fondo */
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.15s ease; /* Transición suave al interactuar */
+}
+
+/* Efecto visual al pasar el cursor (útil para testeo y depuración de coordenadas) */
+.hitbox:hover {
+    background-color: rgba(255, 255, 255, 0.12); 
+}
+
+/* Efecto visual al hacer clic */
+.hitbox:active {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* =========================================================================
+   5. POSICIONES EXACTAS Y RESPONSIVE DE LAS HITBOXES (NIVEL 1)
+   ========================================================= */
+
+/* --- Pantalla: Glosario --- */
+.btn-glosario-next {
+    top: 46%;
+    right: 3%;
+    width: 11.5%;
+    height: 6.5%;
+}
+
+/* --- Pantalla: Información del Caso --- */
+.btn-info-back {
+    top: 46%;
+    left: 2%;
+    width: 11.5%;
+    height: 6.5%;
+}
+
+.btn-info-next {
+    top: 46%;
+    right: 3%;
+    width: 11.5%;
+    height: 6.5%;
+}
+
+/* --- Pantalla: Selección de Suspects --- */
+.btn-seleccion-back {
+    top: 46%;
+    left: 2%;
+    width: 11.5%;
+    height: 6.5%;
+}
+
+/* Tarjetas individuales de los 3 sospechosos */
+.card-suspect {
+    top: 19%;
+    height: 54%;
+    overflow: hidden;
+}
+
+.area-lucy {
+    left: 24.5%;
+    width: 16.2%;
+}
+
+.area-daniel {
+    left: 41.8%;
+    width: 16.2%;
+}
+
+.area-james {
+    left: 58.8%;
+    width: 16.2%;
+}
+
+.suspect-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.suspect-hover-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(212, 175, 55, 0);
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Efecto dorado al pasar el cursor sobre los retratos de los sospechosos */
+.card-suspect:hover .suspect-hover-effect {
+    border-color: rgba(212, 175, 55, 0.8);
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* --- Testimonios & Inculpar --- */
+.btn-top-left-back {
+    top: 5.5%;
+    left: 2.5%;
+    width: 11.5%;
+    height: 6.5%;
+}
+
+.btn-accuse-main {
+    bottom: 7%;
+    left: 70%;
+    transform: translateY(40%);
+    width: 25%;
+    height: 11.5%;
+}
+
+/* Botones centrales de contradicción */
+.btn-contradiction {
+    left: 46%;
+    width: 33%;
+    height: 12%;
+}
+
+.btn-location {
+    top: 21.5%;
+}
+
+.btn-murder-weapon {
+    top: 42%;
+}
+
+/* =========================================================================
+   6. HITBOXES DE LOS BOTONES EN LAS PANTALLAS DE RESULTADO FINAL
+   ========================================================= */
+
+/* Botón RETRY (Ubicado en la esquina inferior derecha de las pantallas de error/fallo) */
+.btn-retry {
+     bottom: 4%;
+    right: 1%;
+    width: 18%;
+    height: 13%;
+}
+
+/* Botón NEXT CASE (Ubicado en la esquina inferior derecha de la pantalla de victoria) */
+.btn-next-case {
+     bottom: 4%;
+    right: 1%;
+    width: 18%;
+    height: 13%;
+}

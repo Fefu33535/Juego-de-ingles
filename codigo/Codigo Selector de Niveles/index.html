@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selector de Niveles</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Botón Salir (Arriba a la izquierda) -->
+  <button class="btn-salir" onclick="salirJuego()">
+    <img src="btn_salir.png" alt="Salir">
+  </button>
+
+  <!-- Título Superior -->
+  <header class="titulo-container">
+    <h1>SELECTOR DE<br>NIVELES</h1>
+  </header>
+
+  <!-- Contenedor de Niveles / Carpetas (3 niveles centrados) -->
+  <main class="niveles-container">
+    
+    <!-- Nivel 1 (Desbloqueado) -->
+    <button class="level-btn unlocked" onclick="seleccionarNivel(1)">
+      <img src="carpeta_abierta.png" alt="Nivel 1">
+      <span class="level-number">1</span>
+    </button>
+
+    <!-- Nivel 2 (Bloqueado) -->
+    <button class="level-btn locked" disabled>
+      <img src="carpeta_candado.png" alt="Nivel 2 Bloqueado">
+    </button>
+
+    <!-- Nivel 3 (Bloqueado) -->
+    <button class="level-btn locked" disabled>
+      <img src="carpeta_candado.png" alt="Nivel 3 Bloqueado">
+    </button>
+
+  </main>
+
+  <script>
+    function seleccionarNivel(numeroNivel) {
+      alert("Iniciando Nivel " + numeroNivel);
+      // window.location.href = 'nivel' + numeroNivel + '.html';
+    }
+
+    function salirJuego() {
+      alert("Saliendo del selector...");
+    }
+  </script>
+</body>
+</html>

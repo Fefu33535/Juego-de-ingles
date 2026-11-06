@@ -1,0 +1,276 @@
+/* Reset y Estilos Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+}
+
+/* Viewport 16:9 Adaptado a pantalla completa sin bordes negros forzados */
+#game-viewport {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    aspect-ratio: 16 / 9;
+    background-color: #1a120b;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Fondo expandido por toda la pantalla */
+.bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Capa general de elementos */
+header, main, footer, #toast-notificacion {
+    position: relative;
+    z-index: 2;
+}
+
+/* Cabecera */
+.tienda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    width: 100%;
+}
+
+/* Botones de imagen pura con tamaño escalado de forma prominente */
+.btn-img-asset {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, filter 0.2s ease;
+}
+
+.btn-img-asset:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.btn-img-asset img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Dimensiones generosas para SALIR y VESTIDOR */
+#btn-salir {
+    width: 210px;
+    height: 85px;
+}
+
+#btn-vestidor {
+    width: 330px;
+    height: 115px;
+}
+
+/* Título Tienda de Puntos bien grande */
+.tienda-titulo {
+    color: #f7f1e5;
+    font-size: 52px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.85);
+}
+
+/* Panel Lupapoints escalado */
+.puntos-container {
+    background: linear-gradient(to bottom, #d8cc9b, #b59b5d);
+    border: 3px solid #5c4033;
+    border-radius: 8px;
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+.moneda-icon-container {
+    width: 38px;
+    height: 38px;
+}
+.moneda-icon-container img, .btn-comprar-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#saldo-lupapoints {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2b1d0c;
+}
+
+/* Contenido Principal / Categorías (Tableros grandes que cubren el pizarrón) */
+.tienda-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 40px;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoria-section {
+    background: rgba(43, 29, 12, 0.9);
+    border: 3px solid #8c6747;
+    padding: 18px 24px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+    width: 100%;
+    max-width: 1050px; /* Ancho escalado y ampliado para ocupar el espacio exacto del pizarrón */
+}
+
+.categoria-titulo {
+    color: #dfd3c3;
+    font-size: 16px;
+    margin-bottom: 12px;
+    letter-spacing: 1.5px;
+}
+
+.tarjetas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Tarjeta de Producto escalada a mayor tamaño */
+.card-producto {
+    background: linear-gradient(to bottom, #f4ecd8, #e2d4b7);
+    border: 2px solid #6b4f3b;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 5px 8px rgba(0,0,0,0.4);
+}
+
+/* Contenedor de imagen SIN CUADRO, más amplio y cómodo */
+.card-img-container {
+    width: 120px;
+    height: 110px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-nombre {
+    font-size: 15px;
+    font-weight: bold;
+    color: #2b1d0c;
+    text-align: center;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Botones de compra redondeados y grandes */
+.btn-comprar {
+    background: linear-gradient(to bottom, #2b4c7e, #1a3254);
+    border: 2px solid #0f1e33;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+    transition: background 0.2s, transform 0.1s;
+}
+.btn-comprar:hover {
+    background: #345c99;
+    transform: translateY(-1px);
+}
+.btn-comprar-icon {
+    width: 22px;
+    height: 22px;
+}
+.btn-comprar-texto {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Estado Comprado */
+.btn-comprado {
+    background: linear-gradient(to bottom, #7e2b2b, #541a1a) !important;
+    border-color: #330f0f !important;
+    cursor: default !important;
+    pointer-events: none;
+    border-radius: 10px !important;
+}
+
+/* Footer / Botón Vestidor */
+.tienda-footer {
+    padding: 0 50px 30px 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Notificación Flotante (Toast) */
+#toast-notificacion {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: rgba(140, 28, 28, 0.95);
+    color: #fff;
+    padding: 12px 28px;
+    border: 2px solid #ffcccc;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+#toast-notificacion.toast-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

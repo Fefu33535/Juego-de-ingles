@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Puntos - Criminal Logic</title>
+    <link rel="stylesheet" href="tienda.css">
+</head>
+<body>
+
+    <!-- Viewport principal escalable a pantalla completa -->
+    <div id="game-viewport">
+        <!-- Imagen de fondo / Contenedor visual -->
+        <div id="tienda-fondo" class="bg-container"></div>
+
+        <!-- Interfaz Superior -->
+        <header class="tienda-header">
+            <!-- Botón Salir más grande -->
+            <button id="btn-salir" class="btn-img-asset">
+                <img src="" alt="Salir" data-img="salir">
+            </button>
+            
+            <h1 class="tienda-titulo">TIENDA DE PUNTOS</h1>
+            
+            <div id="panel-puntos" class="puntos-container">
+                <div class="moneda-icon-container">
+                    <img src="" alt="Lupapoints" data-img="moneda">
+                </div>
+                <span id="saldo-lupapoints">0</span>
+            </div>
+        </header>
+
+        <!-- Contenido Central: Categorías y Tarjetas -->
+        <main class="tienda-main">
+            
+            <!-- Categoría A: Artículos Internos -->
+            <section class="categoria-section">
+                <h2 class="categoria-titulo">⭐ ARTÍCULOS INTERNOS</h2>
+                <div class="tarjetas-grid">
+                    
+                    <!-- Artículo 1 -->
+                    <article class="card-producto" data-id="zapatosPayaso" data-precio="3000">
+                        <div class="card-img-container">
+                            <img src="" alt="Zapatos de Payaso" data-img="zapatosPayaso">
+                        </div>
+                        <h3 class="card-nombre">ZAPATOS DE PAYASO</h3>
+                        <button class="btn-comprar" onclick="comprarArticulo('zapatosPayaso')">
+                            <span class="btn-comprar-icon"><img src="" alt="Icono" data-img="moneda"></span>
+                            <span class="btn-comprar-texto">3000</span>
+                        </button>
+                    </article>
+
+                    <!-- Artículo 2 -->
+                    <article class="card-producto" data-id="cowShoes" data-precio="1200">
+                        <div class="card-img-container">
+                            <img src="" alt="Cow Shoes" data-img="cowShoes">
+                        </div>
+                        <h3 class="card-nombre">COW SHOES</h3>
+                        <button class="btn-comprar" onclick="comprarArticulo('cowShoes')">
+                            <span class="btn-comprar-icon"><img src="" alt="Icono" data-img="moneda"></span>
+                            <span class="btn-comprar-texto">1200</span>
+                        </button>
+                    </article>
+
+                    <!-- Artículo 3 -->
+                    <article class="card-producto" data-id="gorraHelices" data-precio="4000">
+                        <div class="card-img-container">
+                            <img src="" alt="Gorra con Hélices" data-img="gorraHelices">
+                        </div>
+                        <h3 class="card-nombre">GORRA CON HÉLICES</h3>
+                        <button class="btn-comprar" onclick="comprarArticulo('gorraHelices')">
+                            <span class="btn-comprar-icon"><img src="" alt="Icono" data-img="moneda"></span>
+                            <span class="btn-comprar-texto">4000</span>
+                        </button>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Categoría B: Artículos Externos -->
+            <section class="categoria-section">
+                <h2 class="categoria-titulo">⭐ ARTÍCULOS EXTERNOS</h2>
+                <div class="tarjetas-grid">
+                    
+                    <!-- Artículo 4 -->
+                    <article class="card-producto" data-id="actividadExamen" data-precio="18000">
+                        <div class="card-img-container">
+                            <img src="" alt="Actividad en Examen" data-img="actividadExamen">
+                        </div>
+                        <h3 class="card-nombre">-1 ACTIVIDAD EN EXAMEN</h3>
+                        <button class="btn-comprar" onclick="comprarArticulo('actividadExamen')">
+                            <span class="btn-comprar-icon"><img src="" alt="Icono" data-img="moneda"></span>
+                            <span class="btn-comprar-texto">18000</span>
+                        </button>
+                    </article>
+
+                    <!-- Artículo 5 -->
+                    <article class="card-producto" data-id="seleccionarTema" data-precio="10000">
+                        <div class="card-img-container">
+                            <img src="" alt="Seleccionar Tema" data-img="seleccionarTema">
+                        </div>
+                        <h3 class="card-nombre">SELECCIONAR TEMA</h3>
+                        <button class="btn-comprar" onclick="comprarArticulo('seleccionarTema')">
+                            <span class="btn-comprar-icon"><img src="" alt="Icono" data-img="moneda"></span>
+                            <span class="btn-comprar-texto">10000</span>
+                        </button>
+                    </article>
+
+                    <!-- Artículo 6 -->
+                    <article class="card-producto" data-id="puntoCalificacion" data-precio="20000">
+                        <div class="card-img-container">
+                            <img src="" alt="+1 Punto en Calificación" data-img="puntoCalificacion">
+                        </div>
+                        <h3 class="card-nombre">+1 PUNTO EN CALIFICACIÓN</h3>
+                        <button class="btn-comprar" onclick="comprarArticulo('puntoCalificacion')">
+                            <span class="btn-comprar-icon"><img src="" alt="Icono" data-img="moneda"></span>
+                            <span class="btn-comprar-texto">20000</span>
+                        </button>
+                    </article>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Botón Inferior Derecho: Vestidor bien grande -->
+        <footer class="tienda-footer">
+            <button id="btn-vestidor" class="btn-img-asset">
+                <img src="" alt="Vestidor" data-img="vestidor">
+            </button>
+        </footer>
+
+        <!-- Notificación visual flotante para Dinero Insuficiente -->
+        <div id="toast-notificacion" class="toast-oculto">
+            DINERO INSUFICIENTE
+        </div>
+
+    </div>
+
+    <!-- Script de configuración y lógica -->
+    <script src="tienda.js"></script>
+</body>
+</html>

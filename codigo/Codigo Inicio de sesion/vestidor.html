@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vestidor - Criminal Logic</title>
+    <link rel="stylesheet" href="vestidor.css">
+</head>
+<body>
+
+    <!-- Viewport principal en relación 16:9 -->
+    <div id="game-viewport">
+        <!-- Imagen de fondo del vestidor -->
+        <div id="vestidor-fondo" class="bg-container"></div>
+
+        <!-- Cabecera / Botón Salir y Título -->
+        <header class="vestidor-header">
+            <button id="btn-salir" class="btn-img-asset">
+                <img src="" alt="Salir" data-img="salir">
+            </button>
+            <h1 class="vestidor-titulo">VESTIDOR</h1>
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- Contenido Central -->
+        <main class="vestidor-main">
+            
+            <!-- Panel Izquierdo: Armario más ancho y alineado en columna -->
+            <aside class="panel-armario">
+                <img src="" alt="Armario" id="img-armario" class="armario-bg">
+                
+                <div class="armario-contenido-botones">
+                    
+                    <!-- Repisa 1: Sombreros -->
+                    <div class="armario-zona zona-sombreros">
+                        <div class="item-slot desbloqueado seleccionado" data-id="sombreroBase" data-categoria="sombrero" onclick="interactuarPrenda('sombreroBase', 'sombrero')">
+                            <img src="" alt="Sombrero Base" data-item="sombreroBase">
+                        </div>
+                    </div>
+
+                    <!-- Repisa 2: Abrigos -->
+                    <div class="armario-zona zona-abrigos">
+                        <div class="item-slot desbloqueado seleccionado" data-id="chaquetaBase" data-categoria="abrigo" onclick="interactuarPrenda('chaquetaBase', 'abrigo')">
+                            <img src="" alt="Chaqueta Base" data-item="chaquetaBase">
+                        </div>
+                    </div>
+
+                    <!-- Repisa 3: Pantalones -->
+                    <div class="armario-zona zona-pantalones">
+                        <div class="item-slot desbloqueado seleccionado" data-id="pantalonBase" data-categoria="pantalon" onclick="interactuarPrenda('pantalonBase', 'pantalon')">
+                            <img src="" alt="Pantalón Base" data-item="pantalonBase">
+                        </div>
+                    </div>
+
+                    <!-- Repisa 4: Calzado -->
+                    <div class="armario-zona zona-calzado">
+                        <div class="item-slot desbloqueado seleccionado" data-id="botasBase" data-categoria="calzado" onclick="interactuarPrenda('botasBase', 'calzado')">
+                            <img src="" alt="Botas Base" data-item="botasBase">
+                        </div>
+                        <!-- Cow Shoes (Oculto si no se compró en tienda) -->
+                        <div class="item-slot" id="slot-cowShoes" data-id="cowShoes" data-categoria="calzado" onclick="interactuarPrenda('cowShoes', 'calzado')">
+                            <img src="" alt="Cow Shoes" data-item="cowShoes">
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- Área Central/Derecha: Escenario del Personaje -->
+            <section class="escenario-personaje">
+                <div class="personaje-wrapper">
+                    <div class="personaje-sombra"></div>
+                    <img id="img-personaje" src="" alt="Detective" class="pj-base">
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Controles Inferiores Derecha: Resetear y Guardar grandes y encimados -->
+        <footer class="vestidor-footer">
+            <button id="btn-resetear" class="btn-img-asset" onclick="resetearVestimenta()">
+                <img src="" alt="Resetear" data-img="resetear">
+            </button>
+            <button id="btn-guardar" class="btn-img-asset" onclick="guardarVestimenta()">
+                <img src="" alt="Guardar" data-img="guardar">
+            </button>
+        </footer>
+
+        <!-- Notificación visual flotante -->
+        <div id="toast-notificacion" class="toast-oculto">
+            GUARDADO CORRECTAMENTE
+        </div>
+
+    </div>
+
+    <script src="vestidor.js"></script>
+</body>
+</html>
